@@ -38,7 +38,6 @@ function multiply(first, second) {
 		calculationMatrix[i + reversed1.length] = caret + '';
 	}
 	var result = calculationMatrix.reverse().join("");
-	console.log(result);
 	var pos = 0;
 	while(result.charAt(pos) == '0' && pos < result.length) {
 		pos++;
