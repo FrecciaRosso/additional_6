@@ -1,15 +1,21 @@
 module.exports = function zeros(expression) {
   // your solution
-  var expressions = expression.split("*");
-  var factorials = [];
-  
-  var currentNumber = 1;
-  var result = 1;
-  while (currentNumber <= factorial) {
-	  result = multiply(String(currentNumber), String(result));
-	  currentNumber++;
-  }
-  return result
+	var expressions = expression.split("*");
+	var factorials = [];
+	  
+	for (var i = 0; i < expressions.length; i++) {
+		factorials[i] = calculateAllFactorials(expressions[i]);
+	}
+
+	var result = factorials.reduce(multiply);
+	var count = 0;
+	var zero = result.length-1;
+	while (result[zero] == '0') {
+		count++;
+		zero--;
+	}
+
+	return count;
 }
 
 function multiply(first, second) {
@@ -42,9 +48,19 @@ function multiply(first, second) {
 
 function calculateAllFactorials(str) {
 	var iterations = str.split("!");
-	
+	var result = iterations[0];
+	for (var i = 1; i <= iterations.length-1; i++) {
+		result = calculateFactorial(result);
+	}
+	return result;
 }
 
-function calculateFactorial() {
-	
+function calculateFactorial(str) {
+	var currentNumber = 1;
+	var result = 1;
+	while (currentNumber <= str) {
+		result = multiply(String(currentNumber), String(result));
+		currentNumber++;
+	}
+	return result;
 }
